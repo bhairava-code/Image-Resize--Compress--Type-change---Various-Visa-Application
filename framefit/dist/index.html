@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087f69">
+  <meta name="description" content="Resize and compress photos for visa applications or any custom size. Crop, enter dimensions, set a file limit and download. Photos are processed on your device.">
+  <title>FrameFit — Every photo. The right size.</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css?v=2">
+  <script type="module" src="./app.js?v=2"></script>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon-library" aria-hidden="true"><defs>
+    <symbol id="i-crop" viewBox="0 0 24 24"><path d="M7 3v12a2 2 0 0 0 2 2h12M3 7h12a2 2 0 0 1 2 2v12"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 17v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m3 17 6-6 4 4 3-3 5 5"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3L12 3ZM20 2v4m-2-2h4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></symbol>
+    <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M20 7v5h-5M20 12a8 8 0 1 0-2 5"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 7v5h5M4 12a8 8 0 1 1 2 5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h5m5 0h6M4 17h10m5 0h1"/><circle cx="11" cy="7" r="2"/><circle cx="16" cy="17" r="2"/></symbol>
+    <symbol id="i-compress" viewBox="0 0 24 24"><path d="m3 3 6 6m0-5v5H4m17 12-6-6m0 5v-5h5M21 3l-6 6m0-5v5h5M3 21l6-6m0 5v-5H4"/></symbol>
+  </defs></svg>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./" aria-label="FrameFit home"><span class="brand-mark"><svg><use href="#i-crop"/></svg></span>frame<span>fit</span><span class="brand-dot">.</span></a>
+      <nav aria-label="Main navigation"><a href="#workspace" class="nav-active">Photo studio</a><button type="button" class="nav-link" id="guide-open">Photo requirements <span>↗</span></button></nav>
+      <span class="privacy-badge"><svg><use href="#i-shield"/></svg>100% on your device</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy"><span class="eyebrow"><span></span>A LITTLE TOOL. A PERFECT FIT.</span><h1 id="hero-title">Every photo.<br><em>The right size.</em></h1><p>Visa photos, custom dimensions, and smaller files.<br>One simple workspace. Yours to make fit.</p></div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="art-photo art-back"><div class="art-mountain"></div><div class="art-sun"></div></div>
+        <div class="art-photo art-front"><div class="portrait-head"></div><div class="portrait-body"></div><span class="crop-corner tl"></span><span class="crop-corner tr"></span><span class="crop-corner bl"></span><span class="crop-corner br"></span><span class="art-size">600 × 600 px</span></div>
+        <div class="art-tag"><span class="check-bubble"><svg><use href="#i-check"/></svg></span>Just the right fit</div><span class="art-cross">+</span><span class="art-dot"></span>
+      </div>
+    </section>
+
+    <section class="workspace" id="workspace" aria-label="Photo editing workspace">
+      <form id="request-form" class="request-bar">
+        <div class="request-icon"><svg><use href="#i-spark"/></svg></div>
+        <div class="request-input-wrap"><label for="request">Have a size in mind? Just type it.</label><input id="request" type="text" autocomplete="off" placeholder="e.g. 600 × 600 px, under 200 KB" maxlength="180" aria-describedby="request-feedback"></div>
+        <button class="apply-button" type="submit">Apply <svg><use href="#i-arrow"/></svg></button>
+      </form>
+      <div class="quick-requests"><span>Try</span><button type="button" data-request="India visa under 200 KB">India visa · 200 KB</button><button type="button" data-request="35 × 45 mm at 300 DPI">35 × 45 mm</button><button type="button" data-request="compress to 100 KB">Under 100 KB</button><p id="request-feedback" role="status" aria-live="polite"></p></div>
+
+      <div class="studio-grid">
+        <section class="editor-card" aria-labelledby="photo-title">
+          <div class="card-heading"><div class="section-title"><span class="step-number">1</span><h2 id="photo-title">Your photo</h2></div><button class="text-button" id="replace-photo" hidden type="button"><svg><use href="#i-upload"/></svg>Replace</button><span class="small-label" id="file-hint">A good photo is a good start</span></div>
+          <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+          <div class="photo-stage" id="drop-zone">
+            <div class="stage-caption"><span class="status-dot"></span><span id="stage-label">A SPACE FOR YOUR PHOTO</span></div>
+            <div class="empty-state" id="empty-state">
+              <div class="upload-art"><div></div><span><svg><use href="#i-image"/></svg></span><i>+</i></div>
+              <h3>Drop your photo here</h3><p>Let’s get it into shape.</p>
+              <button class="primary-button choose-button" id="choose-photo" type="button"><svg><use href="#i-upload"/></svg>Choose a photo</button>
+              <span class="upload-note">JPG, PNG or WebP · up to 50 MB</span><span class="paste-note">You can also paste an image with Ctrl / ⌘ + V</span>
+            </div>
+            <div id="canvas-wrap" class="canvas-wrap" hidden>
+              <canvas id="photo-canvas" tabindex="0" role="img" aria-label="Photo crop preview. Drag to reposition, or use arrow keys when focused."></canvas>
+              <div class="composition-guide" id="composition-guide" aria-hidden="true"><span class="guide-line horizontal"></span><span class="guide-line vertical"></span><span class="guide-oval"></span></div>
+              <img id="export-preview" alt="Exported photo preview" hidden>
+            </div>
+            <div class="stage-footer"><span id="stage-instruction">Your photo stays on this device</span><span class="dimension-chip" id="dimension-chip">600 × 600 px</span></div>
+          </div>
+          <p class="inline-message" id="upload-error" role="alert" hidden></p>
+          <div class="crop-toolbar" id="crop-toolbar">
+            <div class="zoom-control"><label for="zoom">Zoom</label><button id="zoom-out" type="button" class="icon-button" aria-label="Zoom out" disabled>−</button><input id="zoom" type="range" min="1" max="4" step="0.01" value="1" aria-label="Photo zoom" disabled><button id="zoom-in" type="button" class="icon-button" aria-label="Zoom in" disabled>+</button><output id="zoom-value">100%</output></div>
+            <div class="tool-actions"><button id="rotate" class="icon-button" type="button" title="Rotate 90°" aria-label="Rotate photo 90 degrees" disabled><svg><use href="#i-rotate"/></svg></button><button id="reset-crop" class="icon-button" type="button" title="Reset crop" aria-label="Reset crop" disabled><svg><use href="#i-reset"/></svg></button><span class="tool-divider"></span><label class="guide-toggle"><input id="show-guide" type="checkbox"><span>Guides</span></label></div>
+          </div>
+          <div class="file-strip" id="file-strip" hidden><span class="file-icon"><svg><use href="#i-image"/></svg></span><div><strong id="file-name"></strong><span id="file-details"></span></div><button class="icon-button" id="remove-photo" type="button" aria-label="Remove photo"><svg><use href="#i-close"/></svg></button></div>
+          <div class="editor-bottom" id="editor-bottom"><svg><use href="#i-shield"/></svg><p>No uploads, no photo storage. Your image is processed in your browser.</p></div>
+          <div class="result-panel" id="result-panel" hidden aria-live="polite">
+            <div class="result-title"><span class="check-bubble"><svg><use href="#i-check"/></svg></span><strong id="result-heading">Your photo is ready</strong><button type="button" class="text-button" id="back-to-crop">Back to crop</button></div>
+            <div class="result-stats"><div><span>Dimensions</span><strong id="result-dimensions"></strong></div><div><span>File size</span><strong id="result-size"></strong></div><div><span id="result-third-label">Smaller by</span><strong id="result-saving"></strong></div></div>
+            <p id="result-warning" class="result-warning" hidden></p><p class="result-detail" id="result-detail"></p>
+            <a class="primary-button download-button" id="download" target="_blank" rel="noopener" aria-disabled="false"><svg><use href="#i-download"/></svg><span id="download-label">Download photo</span></a>
+            <div class="download-alternatives"><a id="download-direct" class="text-button" target="_blank" rel="noopener">Direct download</a><span>·</span><a id="open-image" class="text-button" target="_blank" rel="noopener">Open image ↗</a></div>
+            <p id="download-status" class="download-status" role="status" hidden></p>
+            <p class="download-help">No file appeared? Open the image, then right-click or long-press to save.</p>
+          </div>
+        </section>
+
+        <aside class="settings-card" aria-labelledby="settings-title">
+          <div class="card-heading"><div class="section-title"><span class="step-number">2</span><h2 id="settings-title">Make it fit</h2></div><svg class="heading-icon"><use href="#i-sliders"/></svg></div>
+          <div class="mode-tabs" role="group" aria-label="Resize mode"><button type="button" class="active" data-mode="preset" aria-pressed="true">Country preset</button><button type="button" data-mode="custom" aria-pressed="false">Custom size</button><button type="button" data-mode="compress" aria-pressed="false">Compress</button></div>
+          <div class="settings-body">
+            <div id="preset-fields"><label class="field-label" for="preset-select">Country & application</label><div class="select-wrap"><select id="preset-select"></select></div><div class="popular-presets" id="popular-presets" aria-label="Popular country presets"></div><div class="preset-info"><span id="preset-type">Regular visa · digital</span><p id="preset-rule"></p><a id="preset-source" target="_blank" rel="noopener noreferrer">Official requirements ↗</a></div></div>
+            <div id="custom-fields" hidden><div class="field-label-row"><label class="field-label" for="width">Dimensions</label><label class="aspect-lock"><input type="checkbox" id="lock-ratio">Lock ratio</label></div><div class="dimensions-row"><div><span class="input-caption">Width</span><input id="width" type="number" value="600" min="0.01" max="6000" step="any" aria-label="Output width"></div><span class="times">×</span><div><span class="input-caption">Height</span><input id="height" type="number" value="600" min="0.01" max="6000" step="any" aria-label="Output height"></div><div class="unit-wrap"><label class="input-caption" for="unit">Unit</label><select id="unit"><option value="px">px</option><option value="mm">mm</option><option value="cm">cm</option><option value="in">in</option></select></div></div><div class="dpi-row"><label for="dpi">Print resolution</label><div><input id="dpi" type="number" min="36" max="1200" step="1" value="300" aria-label="Print resolution in DPI"><span>DPI</span></div></div><p class="field-help" id="pixel-conversion">Output: 600 × 600 px</p><label class="field-label" for="fit">Fit method</label><select id="fit"><option value="cover">Fill frame · crop edges</option><option value="contain">Fit whole image · add padding</option></select></div>
+            <div class="compress-info" id="compress-fields" hidden><span class="compress-icon"><svg><use href="#i-compress"/></svg></span><h3>Less weight. Same dimensions.</h3><p>Keep your original width and height. We’ll find the best quality within your file limit.</p><span id="original-dimensions">Choose a photo to begin</span></div>
+
+            <div class="settings-divider"></div>
+            <div class="field-label-row"><label class="field-label" for="target-size">Maximum file size <span class="optional">optional</span></label><span class="tiny-badge">AUTO</span></div><div class="size-input"><input type="number" id="target-size" min="1" max="50000" step="any" value="300" placeholder="No limit"><select id="size-unit" aria-label="File size unit"><option value="KB">KB</option><option value="MB">MB</option></select></div><div class="size-shortcuts"><button type="button" data-kb="50">50 KB</button><button type="button" data-kb="100">100 KB</button><button type="button" data-kb="200">200 KB</button><button type="button" data-kb="500">500 KB</button></div>
+            <label class="field-label format-label">Download format</label><div class="format-buttons" role="group" aria-label="Output format"><button type="button" data-format="image/jpeg" class="active" aria-pressed="true">JPG <span>Recommended</span></button><button type="button" data-format="image/png" aria-pressed="false">PNG</button><button type="button" data-format="image/webp" aria-pressed="false">WebP</button></div><p class="field-help" id="format-help">JPEG is required for this application.</p>
+            <div class="quality-label"><label for="quality">Maximum quality</label><output id="quality-value">95%</output></div><input type="range" id="quality" min="55" max="100" value="95" step="1"><p class="field-help" id="quality-help">Quality adjusts to your limit. Dimensions stay exact.</p>
+            <p id="settings-error" class="inline-message" role="alert" hidden></p>
+            <button type="button" class="primary-button export-button" id="export" disabled><svg><use href="#i-spark"/></svg><span id="export-label">Resize & compress</span><svg><use href="#i-arrow"/></svg></button><p class="export-footnote" id="export-footnote">Add a photo to get started</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="how-it-works" aria-label="How it works"><div><span class="benefit-icon"><svg><use href="#i-globe"/></svg></span><h3>A world of sizes</h3><p>Application-specific presets, with official sources a click away.</p></div><div><span class="benefit-icon"><svg><use href="#i-sliders"/></svg></span><h3>Every pixel, your call</h3><p>Use pixels, millimetres, centimetres or inches. You set the frame.</p></div><div><span class="benefit-icon"><svg><use href="#i-compress"/></svg></span><h3>Smaller, thoughtfully</h3><p>Aim for your file limit while preserving as much quality as possible.</p></div></section>
+    <div class="requirements-note"><svg><use href="#i-info"/></svg><p>Size is one part of a good application photo. Check your embassy’s rules for lighting, background, expression and framing. FrameFit resizes your photo; it doesn’t certify acceptance.</p><button class="text-button" type="button" id="guide-open-bottom">See the photo guide ↗</button></div>
+  </main>
+  <footer><a class="footer-brand" href="./">framefit.</a><span>Less fuss. A better fit.</span><span class="footer-private"><svg><use href="#i-shield"/></svg>Made to keep your photos private</span></footer>
+
+  <dialog id="guide-dialog" aria-labelledby="guide-title"><div class="dialog-header"><div><span class="eyebrow">BEFORE YOU APPLY</span><h2 id="guide-title">A photo that fits the brief.</h2></div><button class="icon-button" id="guide-close" type="button" aria-label="Close photo guide"><svg><use href="#i-close"/></svg></button></div><p class="dialog-intro">Choose the exact application, not just the country. Presets help with dimensions and file size. Your application portal and embassy have the final say.</p><div class="guide-cards" id="guide-cards"></div><div class="dialog-note"><strong>A few useful details</strong><p>Composition guides are visual aids, not face detection. Keep the entire head visible; leave the required space around it. Padding does not remove or change your original background.</p><p>Millimetres and inches convert to pixels using your chosen DPI. JPG and PNG exports include that print density. Print physical-size presets at their stated size, with automatic scaling turned off.</p><p>KB = 1,000 bytes and MB = 1,000,000 bytes here. If a limit can’t be reached without reducing quality further, the app shows the actual size instead of changing your dimensions. PNG is lossless; choose JPG or WebP for smaller files.</p><p>Photos are decoded and re-encoded on your device. Original EXIF metadata, including location, is not copied. This app does not retouch faces or replace backgrounds.</p><span>Sources checked 9 October 2026. Requirements may change.</span></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
